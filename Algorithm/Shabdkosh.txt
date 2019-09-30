@@ -1,0 +1,67 @@
+#include <iostream>
+#include<string>
+using namespace std;
+
+char** arr;
+int row, l=0;
+void Initialize() {
+	cout << "Enter no of Words\n";
+	cin >> row;
+	arr = new char* [row];
+	for (int i = 0; i < row; i++) {
+		arr[i] = new char[30];
+	}
+}
+void takeword() {
+	for (int i = 0; i < row; i++) {
+		cin >> arr[i];
+	}
+}
+
+void shabd(char* brr) {
+	//cout << arr << '\n';
+	int length = strlen(brr);
+	//cout << length << '\n';
+	char* sub = new char[3];
+	for (int i = length - 3; i < length; i++) {
+		sub[i - length + 3] = brr[i];
+	}
+	//cout <<" sub "<< sub << '\n';
+	for (int i = 1; i < row; i++) {
+		char* subb = new char[3];
+		for (int j = 0; j < 3; j++) {
+			subb[j] = arr[i][j];
+		}
+		//cout << " sub " << sub << '\n';
+		//cout << " subb " << subb << '\n';
+		if ((sub[0] == subb[0]) && (sub[1] == subb[1]) && (sub[2] == subb[2])) {
+			//cout << "MATCHED\n";
+			if (l == 0) {
+				cout << '\n' << brr << endl;
+			}
+			l++;
+			cout << arr[i] << endl;
+			cout << l << '\n';
+			while(l<row-1)
+				shabd(arr[i]);
+
+			//arr[i] = NULL;
+		}
+	}
+	
+	//cout << sub;
+}
+void Display() {
+	for (int i = 0; i < row; i++) {
+		cout << arr[i] << endl;
+	}
+}
+
+
+int main() {
+	Initialize();
+	takeword();
+	shabd(arr[0]);
+	//Display();
+}
+ 

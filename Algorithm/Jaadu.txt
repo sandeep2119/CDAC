@@ -1,0 +1,83 @@
+import java.util.*;
+
+public class JaaduTeraYeJaadu {
+
+	public static void main(String[] args) 
+	{
+	    int count=0,sum=0,iterat=1;
+	    Scanner sc=new Scanner(System.in);
+	    System.out.println("Enter the Size Of Matrix:");
+	    int r=sc.nextInt();
+	    int c=sc.nextInt();
+	    int data[][]=new int[r][c];
+	    int rc=r+c+2;
+	    int a[]=new int[rc];
+	    if(r==c)
+	    {
+	        for(int i=0;i<r;i++)
+	        {
+	            for(int j=0;j<r;j++)
+	            {
+	                data[i][j]=sc.nextInt();
+	            }
+	        }
+	        //Count total for rows
+	        for(int i=0;i<r;i++)
+	        {
+	            sum=0;
+	            for(int j=0;j<r;j++)
+	            {
+	                sum=sum+data[i][j];
+	            }
+	            a[count]=sum;
+	            count++;
+	        }
+	        //Count For Coloumn
+	        for(int i=0;i<r;i++)
+	        {
+	            sum=0;
+	            for(int j=0;j<r;j++)
+	            {
+	                sum=sum+data[j][i];
+	            }
+	            a[count]=sum;
+	            count++;
+	        }
+	        //Count For Diagonal 1
+	        sum=0;
+	        for(int i=0;i<r;i++)
+	        {
+	            sum=sum+data[i][i];
+	        }
+	       a[count]=sum;
+	       count++;
+	       //Count for Diagonal 2.
+	       sum=0;
+	       for(int i=0;i<r;i++)
+	       {
+	            sum=sum+data[i][r-1-i];
+	       }
+	       a[count]=sum;
+	       count++;
+	       //End Of Calculation
+	       for(int i=1;i<count;i++)
+	       {
+	           if(a[0]==a[i]) 
+	           {
+	               iterat=iterat+1;
+	           }
+	       }
+	       //Matching
+	       if(iterat==count)
+	        System.out.println("ITS A MAGIC");
+	       else 
+	        System.out.println("NO MAGIC");
+	    }
+	    else
+	    {
+	        System.out.println("NO MAGIC");
+	    }
+	    
+	}
+
+}
